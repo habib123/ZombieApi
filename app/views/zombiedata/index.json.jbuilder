@@ -1,0 +1,1 @@
+json.array! @zombiedata, partial: 'zombiedata/zombiedatum', as: :zombiedatum

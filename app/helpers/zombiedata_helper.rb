@@ -1,0 +1,2 @@
+module ZombiedataHelper
+end

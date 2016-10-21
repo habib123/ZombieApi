@@ -1,0 +1,1 @@
+json.partial! "zombiedata/zombiedatum", zombiedatum: @zombiedatum
