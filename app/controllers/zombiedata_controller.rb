@@ -72,11 +72,11 @@ class ZombiedataController < ApplicationController
 
   def search
     #@search_result = Zombiedatum.where(['name LIKE ?',"%#{params[:q]}%"]) if !params[:q].blank?
-    if !params[:q].blank?
+    if params[:q].present?
       @search_result = Zombiedatum.find(params[:q]) if Zombiedatum.exists?(id:params[:q])
       @search_result = api_record_find params if @search_result.blank?
     else
-      flash[:notice] = 'Record not found.'
+      flash[:notice] = 'Record not found.' if @search_result.nil?
       redirect_to action: "index"
     end
   end

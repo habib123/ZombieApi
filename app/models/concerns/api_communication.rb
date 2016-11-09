@@ -4,6 +4,11 @@ module ApiCommunication
 
   def api_record_create zombiedatum
    param = parameter zombiedatum
+
+    response = RestClient.post Zombiedatum::URL, param
+   p 'yy----'
+    p response.inspect
+=begin
    begin
       RestClient::Request.execute( method: :post, url: Zombiedatum::URL ,
                                   timeout: 10 ,
@@ -11,6 +16,7 @@ module ApiCommunication
     rescue RestClient::ExceptionWithResponse => e
      e.response
     end
+=end
   end
 
   def api_record_update zombiedatum
@@ -43,6 +49,7 @@ module ApiCommunication
     redirect_to action: "index"
    end
  end
+
  def parameter zombiedatum
   param = {
     id:zombiedatum['id'],
