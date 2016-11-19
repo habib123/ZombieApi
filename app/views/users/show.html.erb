@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+<p><%= @user.name%></p>
+
+<div class="field">
+  <% for role in Role.all %>
+      <%= role.name if @user.roles.include?(role) %>
+  <%end%>
+</div>
+
+
+
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'bootstrap-sass'
 gem 'grape'
+gem "cancan"
 gem 'hashie-forbidden_attributes'
 gem 'rest-client'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -48,4 +50,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'device'
+gem 'devise'

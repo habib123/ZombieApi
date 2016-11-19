@@ -1,0 +1,17 @@
+<% content_for :top_content do %>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome!</h1>
+<!--        <%for user in User.all%>
+          <p><%= user.name %><%= user.roles.try(:name)%></p>
+          <p>
+            <%= link_to 'Edit', edit_user_registration_path(user) %>
+          </p>
+        <%end%>-->
+        <p>New User Registeration</p>
+        <p>
+          <%= link_to 'Register', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
+        </p>
+      </div>
+    </div>
+<% end %>

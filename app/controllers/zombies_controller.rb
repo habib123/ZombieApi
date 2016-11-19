@@ -1,4 +1,6 @@
 class ZombiesController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
   skip_before_action :verify_authenticity_token
   before_action :set_zombie, only: [:show, :edit, :update, :destroy]
   # GET /zombies
