@@ -12,9 +12,9 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+   #def destroy
+   #  super
+   #end
 
   # protected
 
@@ -22,4 +22,8 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  def after_sign_out_path_for(resource_or_scope)
+    new_user_session_path
+  end
 end

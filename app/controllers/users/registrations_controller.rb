@@ -1,7 +1,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  #accept_nested_attributes_for :roles
+  skip_before_action :require_no_authentication, only: [:new,:create]
+
   protected
 
   def configure_permitted_parameters
@@ -12,9 +13,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+=begin
+   def new
+     super
+   end
+=end
 
   # POST /resource
 =begin
@@ -23,8 +26,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.roles.create(name:)
   end
 =end
-
-  # GET /resource/edit
+# GET /resource/edit
   # def edit
   #   super
   # end
