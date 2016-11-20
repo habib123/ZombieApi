@@ -4,12 +4,32 @@ class Ability
   def initialize(user)
 
     user ||=  User.new
-    if user.is? :admin
-      can :mange, :all
-      can :assign_roles
+    #user.roles.each {|role| send(role.name.to_sym)}
+    p "fuc kkkk........."
+
+    if user.role? :admin
+      can :manage, :all
+    elsif user.role? :elder
+      can :read, :all
+      can [:edit,:update], User do |u|
+        u.id==user.id
+      end
     else
       can :read, :all
     end
+
+=begin
+    def admin
+      can :manage, :all
+    end
+    def elder
+      can :read, :all
+      can :edit, User , id: user.id
+    end
+    def guest
+      can :read, :all
+    end
+=end
 
     # Define abilities for the passed in user here. For example:
     #

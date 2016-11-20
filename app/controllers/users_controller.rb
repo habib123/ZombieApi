@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -15,7 +16,6 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    p 'here .............'
     @user = User.new
   end
 
@@ -26,10 +26,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    p "here  -----------------"
-    p params.inspect
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }

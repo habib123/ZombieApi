@@ -8,8 +8,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :roles
   ROLES = %w[admin guest elder].freeze
 
-  def is?(role)
-    roles.include?(role.to_s)
+  def role?(role)
+    !!roles.find_by_name(role.to_s)
   end
 
 end
