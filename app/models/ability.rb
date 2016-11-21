@@ -2,10 +2,8 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-
     user ||=  User.new
-    #user.roles.each {|role| send(role.name.to_sym)}
-    p "fuc kkkk........."
+    #user.roles.each {|role| send(role.name.to_sym,user)}
 
     if user.role? :admin
       can :manage, :all
@@ -17,20 +15,6 @@ class Ability
     else
       can :read, :all
     end
-
-=begin
-    def admin
-      can :manage, :all
-    end
-    def elder
-      can :read, :all
-      can :edit, User , id: user.id
-    end
-    def guest
-      can :read, :all
-    end
-=end
-
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

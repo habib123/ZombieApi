@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :roles, inverse_of: true
   accepts_nested_attributes_for :roles
+
   ROLES = %w[admin guest elder].freeze
 
   def role?(role)

@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  load_and_authorize_resource
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  #skip_before_action :require_no_authentication,  only: :create
+  load_and_authorize_resource :except=>:create
 
   # GET /users
   # GET /users.json
@@ -16,6 +17,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
+    p "here .....  ......  ...... "
     @user = User.new
   end
 
@@ -26,6 +28,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    p 'fuck ........'
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
